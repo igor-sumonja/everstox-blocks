@@ -3,12 +3,11 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
 
-	const { verticalAlignment, mediaLeftSide, reverseOnDesktop } = attributes;
+	const { verticalAlignment, columns } = attributes;
 
 	const classes = classnames( {
 		[ `is-vertically-aligned-${ verticalAlignment }` ]: verticalAlignment,
-		'has-col-reversed': mediaLeftSide,
-		'is-large-view-reversed': reverseOnDesktop
+		[ `has-${ columns }-columns` ]: columns,
 	} );
 
 	const blockProps = useBlockProps.save( {

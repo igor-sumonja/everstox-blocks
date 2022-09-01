@@ -1,0 +1,26 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-everstox-banner {
+	position: relative;
+
+  .banner__mobile-img,
+  .banner__tablet-img,
+  .banner__desktop-img {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+  }
+
+  .inner-wrapper {
+	position: relative;
+	z-index: 2;
+  }
+
+}

@@ -24,5 +24,6 @@ function create_block_everstox_block_init() {
 	register_block_type( __DIR__ . '/build/text-media' );
 	register_block_type( __DIR__ . '/build/columns' );
 	register_block_type( __DIR__ . '/build/column' );
+	register_block_type( __DIR__ . '/build/banner' );
 }
 add_action( 'init', 'create_block_everstox_block_init' );

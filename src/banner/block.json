@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "everstox/banner",
+	"version": "0.1.0",
+	"title": "Banner",
+	"category": "layout",
+	"icon": "block-default",
+  	"supports": {
+	  "align": false,
+	  "anchor": true,
+	  "color": {
+		"__experimentalDefaultControls": {
+		  "background": true,
+		  "text": true
+		}
+	  }
+	},
+	"attributes": {
+	  "mobileImageID": {
+		"type": "integer"
+	  },
+	  "mobileImageURL": {
+		"type": "string"
+	  },
+	  "tabletImageID": {
+		"type": "integer"
+	  },
+	  "tabletImageURL": {
+		"type": "string"
+	  },
+	  "desktopImageID": {
+		"type": "integer"
+	  },
+	  "desktopImageURL": {
+		"type": "string"
+	  }
+	},
+	"description": "Banner block",
+	"textdomain": "everstox",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
