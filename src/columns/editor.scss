@@ -1,0 +1,28 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-everstox-columns {
+
+  	& > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	  display: flex;
+	  width: 100%;
+	  gap: 20px;
+	}
+
+  	&.is-vertically-aligned-top > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	  align-items: flex-start;
+	}
+  	&.is-vertically-aligned-center > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	  align-items: center;
+	}
+  	&.is-vertically-aligned-bottom > .block-editor-inner-blocks > .block-editor-block-list__layout {
+	  align-items: flex-end;
+	}
+
+
+
+
+}

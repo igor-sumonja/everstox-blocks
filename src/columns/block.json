@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "everstox/columns",
+	"version": "0.1.0",
+	"title": "Columns",
+	"category": "layout",
+	"description": "Grid columns wrapper",
+	"supports": {
+		"html": false,
+	  	"align": true,
+	  	"anchor": true,
+		"color": {
+		  "__experimentalDefaultControls": {
+			"background": true,
+			"text": true
+		  }
+		}
+	},
+  	"attributes": {
+	  "columns": {
+		"type": "integer",
+		"default": 2
+	  },
+	  "verticalAlignment": {
+		"type": "string"
+	  }
+	},
+	"textdomain": "everstox",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
