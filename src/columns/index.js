@@ -1,4 +1,4 @@
-import { mediaAndText as icon } from '@wordpress/icons';
+import { columns as icon } from '@wordpress/icons';
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.

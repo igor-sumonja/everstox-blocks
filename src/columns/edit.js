@@ -1,6 +1,6 @@
 import lodash from "lodash";
-import classnames from "classnames";
 const { times } = lodash;
+import classnames from "classnames";
 import { __ } from '@wordpress/i18n';
 const { createBlock } = wp.blocks;
 const { useSelect, useDispatch } = wp.data;
