@@ -60,99 +60,44 @@ export default function Edit({attributes, setAttributes}) {
 				<PanelBody
 					title={ __( 'Set images', 'everstox' ) }
 				>
+
 					<PanelRow>
-
-						{
-							mobileImageID ?
-								<>
-									<MyMediaUploader
-										blockAttribute={mobileImageID}
-										buttonLabel={ __( 'Replace mobile background image', 'everstox' ) }
-										updateFn={onUpdateImageMobile}
-									/>
-									<div>
-										<img
-											src={mobileImageURL}
-										/>
-									</div>
-								</>
-								:
-								<MyMediaUploader
-									blockAttribute={mobileImageID}
-									buttonLabel={ __( 'Set mobile background image', 'everstox' ) }
-									updateFn={onUpdateImageMobile}
-								/>
-						}
-
-
+						<MyMediaUploader
+							blockAttribute={mobileImageID}
+							buttonLabel={ __( 'Set mobile background image', 'everstox' ) }
+							updateFn={onUpdateImageMobile}
+						/>
+						{ mobileImageID && <div><img src={mobileImageURL} /></div> }
 					</PanelRow>
 					<PanelRow>
-
-						{
-							tabletImageID ?
-								<>
-									<MyMediaUploader
-										blockAttribute={tabletImageID}
-										buttonLabel={ __( 'Replace tablet background image', 'everstox' ) }
-										updateFn={onUpdateImageTablet}
-									/>
-									<div>
-										<img
-											src={tabletImageURL}
-										/>
-									</div>
-								</>
-								:
-								<MyMediaUploader
-									blockAttribute={tabletImageID}
-									buttonLabel={ __( 'Set tablet background image', 'everstox' ) }
-									updateFn={onUpdateImageTablet}
-								/>
-						}
-
-
+						<MyMediaUploader
+							blockAttribute={tabletImageID}
+							buttonLabel={ __( 'Set tablet background image', 'everstox' ) }
+							updateFn={onUpdateImageTablet}
+						/>
+						{ tabletImageID && <div><img src={tabletImageURL} /></div> }
 					</PanelRow>
 					<PanelRow>
-
-						{
-							desktopImageID ?
-								<>
-									<MyMediaUploader
-										blockAttribute={desktopImageID}
-										buttonLabel={ __( 'Replace desktop background image', 'everstox' ) }
-										updateFn={onUpdateImageDesktop}
-									/>
-									<div>
-										<img
-											src={desktopImageURL}
-										/>
-									</div>
-								</>
-								:
-								<MyMediaUploader
-									blockAttribute={desktopImageID}
-									buttonLabel={ __( 'Set desktop background image', 'everstox' ) }
-									updateFn={onUpdateImageDesktop}
-								/>
-						}
-
-
+						<MyMediaUploader
+							blockAttribute={desktopImageID}
+							buttonLabel={ __( 'Set desktop background image', 'everstox' ) }
+							updateFn={onUpdateImageDesktop}
+						/>
+						{ desktopImageID && <div><img src={desktopImageURL} /></div> }
 					</PanelRow>
+
 				</PanelBody>
 			</InspectorControls>
 			<div { ...useBlockProps() }>
-				{ mobileImageID && <img
-					src={ mobileImageURL }
-					className={ `wp-image-${ mobileImageID } banner__mobile-img` }
-				/> }
-				{ tabletImageID && <img
-					src={ tabletImageURL }
-					className={ `wp-image-${ tabletImageID } banner__tablet-img` }
-				/> }
-				{ desktopImageID && <img
-					src={ desktopImageURL }
-					className={ `wp-image-${ desktopImageID } banner__desktop-img` }
-				/> }
+				{ mobileImageID &&
+					<img src={ mobileImageURL }	className={ `wp-image-${ mobileImageID } banner__mobile-img` }	/>
+				}
+				{ tabletImageID &&
+					<img src={ tabletImageURL }	className={ `wp-image-${ tabletImageID } banner__tablet-img` }	/>
+				}
+				{ desktopImageID &&
+					<img src={ desktopImageURL } className={ `wp-image-${ desktopImageID } banner__desktop-img` } />
+				}
 				<div className='inner-wrapper'>
 					<InnerBlocks />
 				</div>
