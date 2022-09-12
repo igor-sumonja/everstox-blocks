@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { InnerBlocks, useBlockProps, MediaUpload, MediaUploadCheck, InspectorControls, MediaPlaceholder } from '@wordpress/block-editor';
+import { InnerBlocks, useBlockProps, MediaUpload, MediaUploadCheck, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, PanelRow, Button } from '@wordpress/components';
 import './editor.scss';
 

@@ -25,5 +25,7 @@ function create_block_everstox_block_init() {
 	register_block_type( __DIR__ . '/build/columns' );
 	register_block_type( __DIR__ . '/build/column' );
 	register_block_type( __DIR__ . '/build/banner' );
+	register_block_type( __DIR__ . '/build/tab-block' );
+	register_block_type( __DIR__ . '/build/tab' );
 }
 add_action( 'init', 'create_block_everstox_block_init' );
