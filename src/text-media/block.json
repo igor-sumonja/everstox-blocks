@@ -8,7 +8,7 @@
 	"description": "Text media block",
 	"supports": {
 		"html": false,
-	  	"align": true,
+	  	"align": false,
 	  	"anchor": true,
 		"color": {
 		  "__experimentalDefaultControls": {

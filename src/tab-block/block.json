@@ -7,17 +7,25 @@
   "icon": "index-card",
   "description": "Display content in a tabbed layout",
   "supports": {
-	"html": false
+	"html": false,
+	"align": [ "full" ],
+	"anchor": true,
+	"color": {
+	  "__experimentalDefaultControls": {
+		"background": true,
+		"text": true
+	  }
+	}
   },
   "keywords": [ "tab", "tabbed content"],
   "attributes":{
+	"align": {
+	  "type": "string",
+	  "default": "full"
+	},
 	"tabLabelsArray":{
 	  "type": "array",
 	  "default": []
-	},
-	"updateChild":{
-	  "type": "boolean",
-	  "default": false
 	}
   },
   "textdomain": "everstox",

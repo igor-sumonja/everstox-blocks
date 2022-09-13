@@ -1,46 +1,29 @@
 import { InnerBlocks } from '@wordpress/block-editor';
-import { useSelect } from '@wordpress/data';
 import { useBlockProps } from '@wordpress/block-editor';
 import './editor.scss';
 
- export default function Edit( props ) {
 
-	 const ALLOWED_BLOCKS = [ 'everstox/tab' ];
+ export default function Edit( { setAttributes, clientId } ) {
 
-	const {
-		attributes,
-		setAttributes,
+	const ALLOWED_BLOCKS = [ 'everstox/tab' ];
 
-	} = props;
-	const { tabLabelsArray, updateChild } = attributes;
-
-	const buildTabLabelsArray = () =>{
-		//function gets child block attributes and saves as an array to parent attributes
-		const parentBlockID = props.clientId;
-		const { innerBlockCount } = useSelect(select => ({
-			innerBlockCount: select('core/block-editor').getBlockCount(parentBlockID)
-		}));
-
+	// get new tab labels on each update
+	const blockUpdate = () => {
+		const innerBlocks = wp.data.select( 'core/block-editor' ).getBlocks( clientId )
 		let tabLabels = [];
-
-		for (let block = 0; block < innerBlockCount; block++) {
-			let tabLabel = wp.data.select( 'core/block-editor' ).getBlocks( parentBlockID )[block].attributes.tabLabel;
-			tabLabels.push(tabLabel);
-		}
-
+		innerBlocks.forEach( (block) => {
+			tabLabels.push( block.attributes.tabLabel)
+		} )
 		return tabLabels;
 	}
 
-	let labelsArray = buildTabLabelsArray();
-	let labelLengthChange = labelsArray.length !== tabLabelsArray.length;
-
-	if( labelLengthChange || updateChild ){
+	const updateTabLabels = () => {
+		let labelsArray = blockUpdate();
 		setAttributes ({ tabLabelsArray: labelsArray  });
-		setAttributes ({ updateChild: false });
 	}
 
 	return (
-		<div { ...useBlockProps() }>
+		<div { ...useBlockProps() }  onChange={ () => updateTabLabels() }>
 			<h2>Tabbed Layout Block</h2>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
