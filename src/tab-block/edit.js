@@ -1,14 +1,13 @@
-import { InnerBlocks } from '@wordpress/block-editor';
-import { useBlockProps } from '@wordpress/block-editor';
+import {InnerBlocks, useBlockProps} from '@wordpress/block-editor';
 import './editor.scss';
 
 
- export default function Edit( { setAttributes, clientId } ) {
+export default function Edit( { setAttributes, clientId } ) {
 
 	const ALLOWED_BLOCKS = [ 'everstox/tab' ];
 
-	// get new tab labels on each update
-	const blockUpdate = () => {
+	// Loop inner blocks (TAB) and fetch their tabLabel attribute
+	const getLabelsArray = () => {
 		const innerBlocks = wp.data.select( 'core/block-editor' ).getBlocks( clientId )
 		let tabLabels = [];
 		innerBlocks.forEach( (block) => {
@@ -17,13 +16,13 @@ import './editor.scss';
 		return tabLabels;
 	}
 
-	const updateTabLabels = () => {
-		let labelsArray = blockUpdate();
-		setAttributes ({ tabLabelsArray: labelsArray  });
+	// update attribute array with innerBlocks labels
+	const updateTabsLabels = () => {
+		setAttributes ({ tabLabelsArray: getLabelsArray()  });
 	}
 
 	return (
-		<div { ...useBlockProps() }  onChange={ () => updateTabLabels() }>
+		<div { ...useBlockProps() }  onChange={ () => updateTabsLabels() }>
 			<h2>Tabbed Layout Block</h2>
 				<InnerBlocks
 					allowedBlocks={ ALLOWED_BLOCKS }
