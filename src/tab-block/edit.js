@@ -1,4 +1,5 @@
 import {InnerBlocks, useBlockProps} from '@wordpress/block-editor';
+import { PanelBody, PanelRow, Button } from '@wordpress/components';
 import './editor.scss';
 
 

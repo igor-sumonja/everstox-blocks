@@ -11,19 +11,13 @@
 .wp-block.wp-block-everstox-tabs {
 	border: 1px dotted  $gray;
 	padding: 1em;
-	h2{
-		font-size: 1em;
-	}
+
 	.wp-block-create-block-tab {
 		padding: 5px;
 		margin-bottom: 1em;
 	}
-    .block-editor-inner-blocks{
-		h4{
-			font-size: .75em;
-		}
-	}
-	&.has-child-selected{
+
+  	&.has-child-selected{
 		border: solid $red 2px;
 	}
 }
