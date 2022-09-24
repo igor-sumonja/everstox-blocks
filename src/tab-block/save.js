@@ -10,7 +10,13 @@ export default function save({attributes}) {
 		<div { ...blockProps } >
 			<ul className="tab-labels" role="tablist" aria-label="tabbed content">
 				{tabLabelsArray.map((label, i) => {
-					return ( <li className={i == 0 ? "tab-label active" : "tab-label"} role="tab" aria-selected={i == 0 ? "true" : "false"} aria-controls={label} tabindex="0"><RawHTML>{label}</RawHTML></li>);
+					return ( <li className={i == 0 ? "tab-label active" : "tab-label"}
+								 style={{backgroundColor: attributes.tabColor}}
+								 role="tab" aria-selected={i == 0 ? "true" : "false"}
+								 aria-controls={label} tabindex="0">
+						{label}
+					</li>
+					);
 				})}
 			</ul>
 			<div className="tab-content">

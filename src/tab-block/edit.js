@@ -1,9 +1,10 @@
-import {InnerBlocks, useBlockProps} from '@wordpress/block-editor';
-import { PanelBody, PanelRow, Button } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
+import {InnerBlocks, useBlockProps, InspectorControls, ColorPaletteControl } from '@wordpress/block-editor';
+import { PanelBody, PanelRow  } from '@wordpress/components';
 import './editor.scss';
 
 
-export default function Edit( { setAttributes, clientId } ) {
+export default function Edit( { attributes, setAttributes, clientId } ) {
 
 	const ALLOWED_BLOCKS = [ 'everstox/tab' ];
 
@@ -23,12 +24,26 @@ export default function Edit( { setAttributes, clientId } ) {
 	}
 
 	return (
-		<div { ...useBlockProps() }  onChange={ () => updateTabsLabels() }>
-			<h2>Tabbed Layout Block</h2>
-				<InnerBlocks
-					allowedBlocks={ ALLOWED_BLOCKS }
-					renderAppender={ InnerBlocks.ButtonBlockAppender }
-				/>
-		</div>
+		<>
+			<InspectorControls>
+				<PanelBody
+					title={ __( 'Set tab toggle background color', 'everstox' ) }
+				>
+					<PanelRow>
+						<ColorPaletteControl
+							value={ attributes.tabColor }
+							onChange={ newValue => setAttributes({tabColor: newValue}) }
+						/>
+					</PanelRow>
+				</PanelBody>
+			</InspectorControls>
+			<div { ...useBlockProps() }  onChange={ () => updateTabsLabels() }>
+				<h2>Tabbed Layout Block</h2>
+					<InnerBlocks
+						allowedBlocks={ ALLOWED_BLOCKS }
+						renderAppender={ InnerBlocks.ButtonBlockAppender }
+					/>
+			</div>
+		</>
 	);
 }

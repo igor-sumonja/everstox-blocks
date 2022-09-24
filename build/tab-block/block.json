@@ -31,6 +31,10 @@
     "tabLabelsArray": {
       "type": "array",
       "default": []
+    },
+    "tabColor": {
+      "type": "string",
+      "default": "#00FFAD"
     }
   },
   "textdomain": "everstox",
