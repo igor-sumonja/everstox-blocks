@@ -3,44 +3,32 @@ import { InnerBlocks, useBlockProps, MediaUpload, MediaUploadCheck, InspectorCon
 import { PanelBody, PanelRow, Button } from '@wordpress/components';
 import './editor.scss';
 
-
-
 export default function Edit({attributes, setAttributes}) {
 
-	const { mobileImageID, mobileImageURL, tabletImageID,  tabletImageURL, desktopImageID,  desktopImageURL} = attributes;
+	const {mobileImageID, mobileImageURL, tabletImageID,  tabletImageURL, desktopImageID,  desktopImageURL } = attributes;
 
-	const onUpdateImageMobile = ( image ) => {
-		console.log('onUpdateImageMobile')
+	/* Set selected image for specific size passed as argument */
+	const onUpdateImage = ( image, size ) => {
+		console.log('onUpdateImage', image)
+		const idAttr = `${size}ImageID`;
+		const urlAttr = `${size}ImageURL`;
 		setAttributes( {
-			mobileImageID: image.id,
-			mobileImageURL: image.url,
-		} );
-	};
-	const onUpdateImageTablet = ( image ) => {
-		console.log('onUpdateImageTablet')
-		setAttributes( {
-			tabletImageID: image.id,
-			tabletImageURL: image.url,
-		} );
-	};
-	const onUpdateImageDesktop = ( image ) => {
-		setAttributes( {
-			desktopImageID: image.id,
-			desktopImageURL: image.url,
+			[idAttr]: image.id,
+			[urlAttr]: image.url
 		} );
 	};
 
 
 	const ALLOWED_MEDIA_TYPES = [ 'image' ];
 
-	function MyMediaUploader({ updateFn, blockAttribute, buttonLabel }) {
+	function MyMediaUploader({ updateFn, selectedImageID, buttonLabel }) {
 		return (
 			<MediaUploadCheck>
 				<MediaUpload
 					title={ __( 'Background image', 'image-selector-example' ) }
 					onSelect={ updateFn }
 					allowedTypes={ ALLOWED_MEDIA_TYPES }
-					value={ blockAttribute }
+					value={ selectedImageID }
 					render={ ( { open } ) => (
 						<Button
 							className={ 'editor-post-featured-image__toggle' }
@@ -63,25 +51,25 @@ export default function Edit({attributes, setAttributes}) {
 
 					<PanelRow>
 						<MyMediaUploader
-							blockAttribute={mobileImageID}
+							selectedImageID={mobileImageID}
 							buttonLabel={ __( 'Set mobile background image', 'everstox' ) }
-							updateFn={onUpdateImageMobile}
+							updateFn={(media) => onUpdateImage(media, 'mobile')}
 						/>
 						{ mobileImageID && <div><img src={mobileImageURL} /></div> }
 					</PanelRow>
 					<PanelRow>
 						<MyMediaUploader
-							blockAttribute={tabletImageID}
+							selectedImageID={tabletImageID}
 							buttonLabel={ __( 'Set tablet background image', 'everstox' ) }
-							updateFn={onUpdateImageTablet}
+							updateFn={(media) => onUpdateImage(media, 'tablet')}
 						/>
 						{ tabletImageID && <div><img src={tabletImageURL} /></div> }
 					</PanelRow>
 					<PanelRow>
 						<MyMediaUploader
-							blockAttribute={desktopImageID}
+							selectedImageID={desktopImageID}
 							buttonLabel={ __( 'Set desktop background image', 'everstox' ) }
-							updateFn={onUpdateImageDesktop}
+							updateFn={(media) => onUpdateImage(media, 'desktop')}
 						/>
 						{ desktopImageID && <div><img src={desktopImageURL} /></div> }
 					</PanelRow>
@@ -90,13 +78,13 @@ export default function Edit({attributes, setAttributes}) {
 			</InspectorControls>
 			<div { ...useBlockProps() }>
 				{ mobileImageID &&
-					<img src={ mobileImageURL }	className={ `wp-image-${ mobileImageID } banner__mobile-img` }	/>
+					<img src={ mobileImageURL }	className={ `wp-image-${ mobileImageID } banner__mobile-img` } 	/>
 				}
 				{ tabletImageID &&
-					<img src={ tabletImageURL }	className={ `wp-image-${ tabletImageID } banner__tablet-img` }	/>
+					<img src={ tabletImageURL }	className={ `wp-image-${ tabletImageID } banner__tablet-img` } 	/>
 				}
 				{ desktopImageID &&
-					<img src={ desktopImageURL } className={ `wp-image-${ desktopImageID } banner__desktop-img` } />
+					<img src={ desktopImageURL } className={ `wp-image-${ desktopImageID } banner__desktop-img` }  />
 				}
 				<div className='inner-wrapper'>
 					<InnerBlocks />
