@@ -7,13 +7,13 @@ export default function save({ attributes }) {
 	return (
 		<div { ...blockProps }>
 			{ mobileImageID &&
-				<img src={ mobileImageURL }	className={ `wp-image-${ mobileImageID } banner__mobile-img` }	alt="" />
+				<img src={ mobileImageURL }	className={ `wp-image-${ mobileImageID } banner__mobile-img` }	alt="" role={'presentation'} />
 			}
 			{ tabletImageID &&
-				<img src={ tabletImageURL }	className={ `wp-image-${ tabletImageID } banner__tablet-img` }	alt="" />
+				<img src={ tabletImageURL }	className={ `wp-image-${ tabletImageID } banner__tablet-img` }	alt="" role={'presentation'} />
 			}
 			{ desktopImageID &&
-				<img src={ desktopImageURL } className={ `wp-image-${ desktopImageID } banner__desktop-img` } alt="" />
+				<img src={ desktopImageURL } className={ `wp-image-${ desktopImageID } banner__desktop-img` } alt="" role={'presentation'} />
 			}
 			<div className="inner-wrapper">
 				<InnerBlocks.Content />

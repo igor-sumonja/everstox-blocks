@@ -9,7 +9,7 @@ export default function Edit({attributes, setAttributes}) {
 
 	/* Set selected image for specific size passed as argument */
 	const onUpdateImage = ( image, size ) => {
-		console.log('onUpdateImage', image)
+		// set attributes names based on size
 		const idAttr = `${size}ImageID`;
 		const urlAttr = `${size}ImageURL`;
 		setAttributes( {
